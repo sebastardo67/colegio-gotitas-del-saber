@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane id="AnchorPane" prefHeight="528.0" prefWidth="781.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21.0.1" fx:controller="main.java.edu.jett.colegio.gotitas.controller.DashboardController">
+    <stylesheets>
+        <URL value="@/main/resources/css/login-view.css" />
+    </stylesheets>
+   <children>
+      <GridPane prefHeight="528.0" prefWidth="781.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="0.0" prefWidth="77.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="0.0" prefWidth="84.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="10.0" prefWidth="439.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="126.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="348.0" minHeight="10.0" prefHeight="348.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="77.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Pane prefHeight="133.0" prefWidth="482.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <children>
+                  <TableView layoutX="-282.0" layoutY="-35.0" prefHeight="367.0" prefWidth="781.0">
+                    <columns>
+                      <TableColumn fx:id="tbColumnIdEstudiante" prefWidth="75.0" text="id" />
+                      <TableColumn fx:id="tbColumnNombreEstudiante" prefWidth="75.0" text="nombre" />
+                        <TableColumn fx:id="tbColumnApellidoEstudiante" prefWidth="75.0" text="apellido" />
+                        <TableColumn fx:id="tbColumnCorreoEstudiante" prefWidth="147.0" text="correo electronico" />
+                        <TableColumn fx:id="tbColumnSeccion" minWidth="3.0" prefWidth="87.0" text="seccion" />
+                        <TableColumn fx:id="tbColumnCurso" prefWidth="75.0" text="curso" />
+                        <TableColumn fx:id="tbColumnNombreDocente" prefWidth="112.0" text="nombre docente" />
+                        <TableColumn fx:id="tbColumnApellidoDocente" prefWidth="134.0" text="apellido docente" />
+                    </columns>
+                  </TableView>
+               </children>
+            </Pane>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
