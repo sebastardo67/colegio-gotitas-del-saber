@@ -34,9 +34,8 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println("TODO LO QUE ESTE ACA SE EJECUTA CUANDO SE MUESTRA LA VISTA");
     }    
-    
     public void handleSayHello(){
-        System.out.println("Hola mi nombre es: " + txtFieldEmail.getText());
+        
     }
     
     public void handleTestDataBaseConnection() throws Exception{
