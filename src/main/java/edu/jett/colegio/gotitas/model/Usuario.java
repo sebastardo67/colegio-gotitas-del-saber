@@ -2,27 +2,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package main.java.edu.jett.colegio.gotitas.dto.request;
+package main.java.edu.jett.colegio.gotitas.model;
 
 /**
  *
  * @author informatica
  */
-public class LoginRequest {
-    private String email;
+public class Usuario {
+    private String correoElectronico;
     private String password;
 
-    public LoginRequest(String email, String password) {
-        this.email = email;
+    public Usuario(String correoElectronico, String password) {
+        this.correoElectronico = correoElectronico;
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
+    public String getCorreoElectronico() {
+        return correoElectronico;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCorreoElectronico(String correoElectronico) {
+        this.correoElectronico = correoElectronico;
     }
 
     public String getPassword() {
@@ -32,4 +32,6 @@ public class LoginRequest {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    
 }
