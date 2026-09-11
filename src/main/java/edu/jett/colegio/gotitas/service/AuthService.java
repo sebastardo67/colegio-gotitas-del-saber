@@ -1,4 +1,4 @@
-    /*
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -46,4 +46,19 @@ public class AuthService {
         return null;
     }
     
+    /**
+     * Nuevo método para registrar un usuario manteniendo la estructura existente.
+     */
+    public boolean registerUser(int idDocente, String email, String rawPassword, int idRol) throws SQLException {
+        if (email == null || email.trim().isEmpty() || rawPassword == null || rawPassword.trim().isEmpty()) {
+            throw new RuntimeException("El correo y la contraseña son obligatorios");
+        }
+
+        // Generar el hash de la contraseña utilizando la clase BCrypt que ya usas en el proyecto
+        // (Nota: asegúrate de usar el método de generación de salt de tu implementación, por ejemplo BCrypt.hashpw)
+        String hashedPassword = BCrypt.hashpw(rawPassword, BCrypt.gensalt());
+
+        // Llamamos al repositorio para que ejecute el INSERT en la base de datos
+        return authRepository.saveUser(idDocente, email, hashedPassword, idRol);
+    }
 }
