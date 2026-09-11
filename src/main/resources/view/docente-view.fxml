@@ -1,14 +1,10 @@
-ChatGPT Plus
-Claro. Te dejo todo tu docente-view.fxml completo, compatible con el DocenteController.java que te di y sin onAction ni #.
-
-Borra todo lo que tengas en docente-view.fxml y pega esto:
-
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -16,8 +12,8 @@ Borra todo lo que tengas en docente-view.fxml y pega esto:
 <?import javafx.scene.layout.RowConstraints?>
 
 <AnchorPane id="AnchorPane"
-            prefHeight="400.0"
-            prefWidth="600.0"
+            prefHeight="500.0"
+            prefWidth="700.0"
             styleClass="mainFxmlClass"
             xmlns:fx="http://javafx.com/fxml/1"
             xmlns="http://javafx.com/javafx/21.0.1"
@@ -31,133 +27,78 @@ Borra todo lo que tengas en docente-view.fxml y pega esto:
 
         <GridPane layoutX="8.0"
                   layoutY="14.0"
-                  prefHeight="392.0"
-                  prefWidth="600.0">
+                  prefHeight="480.0"
+                  prefWidth="680.0">
 
             <columnConstraints>
 
                 <ColumnConstraints
                     hgrow="SOMETIMES"
-                    maxWidth="195.0"
+                    maxWidth="170.0"
                     minWidth="0.0"
-                    prefWidth="18.0" />
+                    prefWidth="170.0" />
 
                 <ColumnConstraints
                     hgrow="SOMETIMES"
-                    maxWidth="400.0"
-                    minWidth="10.0"
-                    prefWidth="31.0" />
-
-                <ColumnConstraints
-                    hgrow="SOMETIMES"
-                    maxWidth="537.0"
-                    minWidth="10.0"
-                    prefWidth="134.0" />
-
-                <ColumnConstraints
-                    hgrow="SOMETIMES"
-                    maxWidth="537.0"
+                    maxWidth="170.0"
                     minWidth="0.0"
-                    prefWidth="130.0" />
+                    prefWidth="170.0" />
 
                 <ColumnConstraints
                     hgrow="SOMETIMES"
-                    maxWidth="537.0"
+                    maxWidth="170.0"
                     minWidth="0.0"
-                    prefWidth="168.0" />
+                    prefWidth="170.0" />
 
                 <ColumnConstraints
                     hgrow="SOMETIMES"
-                    maxWidth="537.0"
-                    minWidth="10.0"
-                    prefWidth="143.0" />
+                    maxWidth="170.0"
+                    minWidth="0.0"
+                    prefWidth="170.0" />
 
             </columnConstraints>
 
             <rowConstraints>
 
                 <RowConstraints
-                    maxHeight="76.0"
-                    minHeight="0.0"
-                    prefHeight="58.0"
-                    vgrow="SOMETIMES" />
+                    maxHeight="60.0"
+                    minHeight="60.0"
+                    prefHeight="60.0" />
 
+                
                 <RowConstraints
-                    maxHeight="342.0"
-                    minHeight="10.0"
-                    prefHeight="309.0"
-                    vgrow="SOMETIMES" />
+                    maxHeight="70.0"
+                    minHeight="70.0"
+                    prefHeight="70.0" />
 
+             
                 <RowConstraints
-                    maxHeight="125.0"
-                    minHeight="0.0"
-                    prefHeight="0.0"
+                    maxHeight="350.0"
+                    minHeight="300.0"
+                    prefHeight="350.0"
                     vgrow="SOMETIMES" />
 
             </rowConstraints>
 
             <children>
 
-                <!-- TABLA DE DOCENTES -->
-
-                <Pane prefHeight="342.0"
-                      prefWidth="437.0"
-                      GridPane.columnIndex="2"
-                      GridPane.rowIndex="1">
-
-                    <children>
-
-                        <TableView
-                            fx:id="tablaDocentes"
-                            layoutX="-47.0"
-                            prefHeight="323.0"
-                            prefWidth="608.0">
-
-                            <columns>
-
-                                <TableColumn
-                                    fx:id="colIdDocente"
-                                    prefWidth="133.0"
-                                    text="id docente" />
-
-                                <TableColumn
-                                    fx:id="colNombre"
-                                    prefWidth="178.0"
-                                    text="Nombre" />
-
-                                <TableColumn
-                                    fx:id="colApellido"
-                                    prefWidth="126.0"
-                                    text="Apellido" />
-
-                                <TableColumn
-                                    fx:id="colCorreo"
-                                    prefWidth="156.0"
-                                    text="Correo Docente" />
-
-                            </columns>
-
-                        </TableView>
-
-                    </children>
-
-                </Pane>
-
-
-                <!-- BOTÓN AÑADIR -->
+         
 
                 <Pane prefHeight="54.0"
-                      prefWidth="114.0"
-                      GridPane.columnIndex="1">
+                      prefWidth="170.0"
+                      GridPane.columnIndex="0"
+                      GridPane.rowIndex="0">
 
                     <children>
 
                         <Button
-                            layoutX="18.0"
-                            layoutY="21.0"
+                            fx:id="btnAñadir"
+                            layoutX="45.0"
+                            layoutY="13.0"
                             mnemonicParsing="false"
+                            onAction="#handleAñadir"
                             prefHeight="34.0"
-                            prefWidth="71.0"
+                            prefWidth="80.0"
                             text="Añadir" />
 
                     </children>
@@ -165,20 +106,21 @@ Borra todo lo que tengas en docente-view.fxml y pega esto:
                 </Pane>
 
 
-                <!-- BOTÓN ACTUALIZAR -->
-
-                <Pane prefHeight="200.0"
-                      prefWidth="200.0"
-                      GridPane.columnIndex="3">
+                <Pane prefHeight="54.0"
+                      prefWidth="170.0"
+                      GridPane.columnIndex="1"
+                      GridPane.rowIndex="0">
 
                     <children>
 
                         <Button
-                            layoutX="20.0"
-                            layoutY="21.0"
+                            fx:id="btnActualizar"
+                            layoutX="35.0"
+                            layoutY="13.0"
                             mnemonicParsing="false"
+                            onAction="#handleActualizar"
                             prefHeight="34.0"
-                            prefWidth="78.0"
+                            prefWidth="105.0"
                             text="Actualizar" />
 
                     </children>
@@ -186,42 +128,138 @@ Borra todo lo que tengas en docente-view.fxml y pega esto:
                 </Pane>
 
 
-                <!-- BOTÓN BORRAR -->
-
-                <Pane prefHeight="200.0"
-                      prefWidth="200.0"
-                      GridPane.columnIndex="4">
+                <Pane prefHeight="54.0"
+                      prefWidth="170.0"
+                      GridPane.columnIndex="2"
+                      GridPane.rowIndex="0">
 
                     <children>
 
                         <Button
-                            layoutX="48.0"
-                            layoutY="21.0"
+                            fx:id="btnBorrar"
+                            layoutX="50.0"
+                            layoutY="13.0"
                             mnemonicParsing="false"
+                            onAction="#handleBorrar"
                             prefHeight="34.0"
-                            prefWidth="60.0"
+                            prefWidth="70.0"
                             text="Borrar" />
 
                     </children>
 
                 </Pane>
 
-
-                <!-- BOTÓN LEER -->
-
-                <Pane prefHeight="200.0"
-                      prefWidth="200.0"
-                      GridPane.columnIndex="5">
+                <Pane prefHeight="54.0"
+                      prefWidth="170.0"
+                      GridPane.columnIndex="3"
+                      GridPane.rowIndex="0">
 
                     <children>
 
                         <Button
-                            layoutX="26.0"
-                            layoutY="21.0"
+                            fx:id="btnLeer"
+                            layoutX="50.0"
+                            layoutY="13.0"
                             mnemonicParsing="false"
+                            onAction="#handleLeer"
                             prefHeight="34.0"
-                            prefWidth="60.0"
+                            prefWidth="70.0"
                             text="Leer" />
+
+                    </children>
+
+                </Pane>
+
+
+                <Pane prefHeight="70.0"
+                      prefWidth="680.0"
+                      GridPane.columnIndex="0"
+                      GridPane.columnSpan="4"
+                      GridPane.rowIndex="1">
+
+                    <children>
+
+
+                        <TextField
+                            fx:id="txtIdDocente"
+                            layoutX="15.0"
+                            layoutY="18.0"
+                            prefHeight="35.0"
+                            prefWidth="130.0"
+                            promptText="ID Docente" />
+
+                        <TextField
+                            fx:id="txtNombre"
+                            layoutX="180.0"
+                            layoutY="18.0"
+                            prefHeight="35.0"
+                            prefWidth="140.0"
+                            promptText="Nombre" />
+                     
+
+                        <TextField
+                            fx:id="txtApellido"
+                            layoutX="350.0"
+                            layoutY="18.0"
+                            prefHeight="35.0"
+                            prefWidth="140.0"
+                            promptText="Apellido" />
+                
+
+                        <TextField
+                            fx:id="txtCorreo"
+                            layoutX="520.0"
+                            layoutY="18.0"
+                            prefHeight="35.0"
+                            prefWidth="145.0"
+                            promptText="Correo" />
+
+                    </children>
+
+                </Pane>
+
+
+
+                <Pane prefHeight="350.0"
+                      prefWidth="680.0"
+                      GridPane.columnIndex="0"
+                      GridPane.columnSpan="4"
+                      GridPane.rowIndex="2">
+
+                    <children>
+
+                        <TableView
+                            fx:id="tablaDocentes"
+                            layoutX="0.0"
+                            layoutY="5.0"
+                            prefHeight="335.0"
+                            prefWidth="680.0">
+
+                            <columns>
+
+                                <TableColumn
+                                    fx:id="colIdDocente"
+                                    prefWidth="150.0"
+                                    text="ID Docente" />
+
+                                <TableColumn
+                                    fx:id="colNombre"
+                                    prefWidth="170.0"
+                                    text="Nombre" />
+
+                                <TableColumn
+                                    fx:id="colApellido"
+                                    prefWidth="170.0"
+                                    text="Apellido" />
+
+                                <TableColumn
+                                    fx:id="colCorreo"
+                                    prefWidth="185.0"
+                                    text="Correo Docente" />
+
+                            </columns>
+
+                        </TableView>
 
                     </children>
 

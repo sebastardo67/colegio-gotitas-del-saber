@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package main.java.edu.jett.colegio.gotitas.config;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,6 +18,6 @@ public class ConnectionDb {
             if (connection == null || connection.isClosed()){
          connection = DriverManager.getConnection(CredentialsDb.URL_DB, CredentialsDb.USER_DB, CredentialsDb.PASS_DB);
         }
-            return null;
+            return connection;
     }
 }
