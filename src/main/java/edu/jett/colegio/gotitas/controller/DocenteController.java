@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 
 import main.java.edu.jett.colegio.gotitas.model.Docente;
 import main.java.edu.jett.colegio.gotitas.service.DocenteService;
+import main.java.edu.jett.colegio.gotitas.util.SceneManager;
 
 public class DocenteController {
 
@@ -44,10 +45,19 @@ public class DocenteController {
     private TextField txtCorreo;
 
     private final DocenteService docenteService = new DocenteService();
+    private SceneManager sceneManager;
+
+    // 1. CONSTRUCTOR VACÍO OBLIGATORIO PARA JAVAFX
+    public DocenteController() {
+    }
+
+    // Constructor opcional por si lo instancias manualmente en algún lado
+    public DocenteController(SceneManager sceneManager) {
+        this.sceneManager = sceneManager;
+    }
 
     @FXML
     public void initialize() {
-
         colIdDocente.setCellValueFactory(
                 dato -> new javafx.beans.property.SimpleIntegerProperty(
                         dato.getValue().getIdDocente()
@@ -75,233 +85,121 @@ public class DocenteController {
         cargarDocentes();
     }
 
-    
-
     @FXML
     private void handleLeer(ActionEvent event) {
         cargarDocentes();
     }
 
     private void cargarDocentes() {
-
         try {
-
             ObservableList<Docente> docentes =
                     FXCollections.observableArrayList(
                             docenteService.listarDocentes()
                     );
-
             tablaDocentes.setItems(docentes);
-
         } catch (SQLException e) {
-
-            mostrarError(
-                    "Error al cargar docentes",
-                    e.getMessage()
-            );
+            mostrarError("Error al cargar docentes", e.getMessage());
         }
     }
-
-    
 
     @FXML
     private void handleAñadir(ActionEvent event) {
-
         try {
-
             int id = Integer.parseInt(txtIdDocente.getText());
-
             String nombre = txtNombre.getText();
             String apellido = txtApellido.getText();
             String correo = txtCorreo.getText();
 
             if (nombre.isEmpty() || apellido.isEmpty() || correo.isEmpty()) {
-                mostrarError(
-                        "Datos incompletos",
-                        "Completa todos los campos."
-                );
+                mostrarError("Datos incompletos", "Completa todos los campos.");
                 return;
             }
 
-            Docente docente = new Docente(
-                    id,
-                    nombre,
-                    apellido,
-                    correo
-            );
-
-            boolean resultado =
-                    docenteService.agregarDocente(docente);
+            Docente docente = new Docente(id, nombre, apellido, correo);
+            boolean resultado = docenteService.agregarDocente(docente);
 
             if (resultado) {
-
-                mostrarInformacion(
-                        "Docente agregado",
-                        "El docente se agregó correctamente."
-                );
-
+                mostrarInformacion("Docente agregado", "El docente se agregó correctamente.");
                 limpiarCampos();
                 cargarDocentes();
             }
-
         } catch (NumberFormatException e) {
-
-            mostrarError(
-                    "ID inválido",
-                    "El ID del docente debe ser un número."
-            );
-
+            mostrarError("ID inválido", "El ID del docente debe ser un número.");
         } catch (SQLException e) {
-
-            mostrarError(
-                    "Error al agregar docente",
-                    e.getMessage()
-            );
+            mostrarError("Error al agregar docente", e.getMessage());
         }
     }
-
-   
 
     @FXML
     private void handleActualizar(ActionEvent event) {
-
         try {
-
             int id = Integer.parseInt(txtIdDocente.getText());
-
             String nombre = txtNombre.getText();
             String apellido = txtApellido.getText();
             String correo = txtCorreo.getText();
 
             if (nombre.isEmpty() || apellido.isEmpty() || correo.isEmpty()) {
-                mostrarError(
-                        "Datos incompletos",
-                        "Completa todos los campos."
-                );
+                mostrarError("Datos incompletos", "Completa todos los campos.");
                 return;
             }
 
-            Docente docente = new Docente(
-                    id,
-                    nombre,
-                    apellido,
-                    correo
-            );
-
-            boolean resultado =
-                    docenteService.actualizarDocente(docente);
+            Docente docente = new Docente(id, nombre, apellido, correo);
+            boolean resultado = docenteService.actualizarDocente(docente);
 
             if (resultado) {
-
-                mostrarInformacion(
-                        "Docente actualizado",
-                        "El docente se actualizó correctamente."
-                );
-
+                mostrarInformacion("Docente actualizado", "El docente se actualizó correctamente.");
                 limpiarCampos();
                 cargarDocentes();
-
             } else {
-
-                mostrarError(
-                        "No encontrado",
-                        "No existe un docente con ese ID."
-                );
+                mostrarError("No encontrado", "No existe un docente con ese ID.");
             }
-
         } catch (NumberFormatException e) {
-
-            mostrarError(
-                    "ID inválido",
-                    "El ID del docente debe ser un número."
-            );
-
+            mostrarError("ID inválido", "El ID del docente debe ser un número.");
         } catch (SQLException e) {
-
-            mostrarError(
-                    "Error al actualizar docente",
-                    e.getMessage()
-            );
+            mostrarError("Error al actualizar docente", e.getMessage());
         }
     }
-
-    
 
     @FXML
     private void handleBorrar(ActionEvent event) {
-
         try {
-
             int id = Integer.parseInt(txtIdDocente.getText());
-
-            boolean resultado =
-                    docenteService.eliminarDocente(id);
+            boolean resultado = docenteService.eliminarDocente(id);
 
             if (resultado) {
-
-                mostrarInformacion(
-                        "Docente eliminado",
-                        "El docente se eliminó correctamente."
-                );
-
+                mostrarInformacion("Docente eliminado", "El docente se eliminó correctamente.");
                 limpiarCampos();
                 cargarDocentes();
-
             } else {
-
-                mostrarError(
-                        "No encontrado",
-                        "No existe un docente con ese ID."
-                );
+                mostrarError("No encontrado", "No existe un docente con ese ID.");
             }
-
         } catch (NumberFormatException e) {
-
-            mostrarError(
-                    "ID inválido",
-                    "Escribe un ID válido."
-            );
-
+            mostrarError("ID inválido", "Escribe un ID válido.");
         } catch (SQLException e) {
-
-            mostrarError(
-                    "Error al eliminar docente",
-                    e.getMessage()
-            );
+            mostrarError("Error al eliminar docente", e.getMessage());
         }
     }
 
-   
-
     private void limpiarCampos() {
-
         txtIdDocente.clear();
         txtNombre.clear();
         txtApellido.clear();
         txtCorreo.clear();
     }
 
-    
-
     private void mostrarInformacion(String titulo, String mensaje) {
-
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-
         alert.setTitle(titulo);
         alert.setHeaderText(null);
         alert.setContentText(mensaje);
-
         alert.showAndWait();
     }
 
     private void mostrarError(String titulo, String mensaje) {
-
         Alert alert = new Alert(Alert.AlertType.ERROR);
-
         alert.setTitle(titulo);
         alert.setHeaderText(null);
         alert.setContentText(mensaje);
-
         alert.showAndWait();
     }
 }

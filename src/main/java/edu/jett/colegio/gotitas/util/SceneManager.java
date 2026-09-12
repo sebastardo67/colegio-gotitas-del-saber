@@ -9,7 +9,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import main.java.edu.jett.colegio.gotitas.controller.DocenteController;
 import main.java.edu.jett.colegio.gotitas.controller.LoginController;
+import main.java.edu.jett.colegio.gotitas.controller.MenuController;
 import main.java.edu.jett.colegio.gotitas.controller.RegisterController;
 import main.java.edu.jett.colegio.gotitas.repository.AuthRepository;
 import main.java.edu.jett.colegio.gotitas.service.AuthService;
@@ -31,15 +33,15 @@ public class SceneManager {
 
     public void switchToLogin() {
         try {
-            // En switchToLogin()
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/login-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("/view/login-view.fxml")
+            );
 
-            
-            // Fábrica para inyectar dependencias al constructor del LoginController
             loader.setControllerFactory(controllerClass -> {
                 if (controllerClass == LoginController.class) {
                     return new LoginController(authService, this);
                 }
+
                 try {
                     return controllerClass.getDeclaredConstructor().newInstance();
                 } catch (Exception e) {
@@ -48,20 +50,21 @@ public class SceneManager {
             });
 
             Parent root = loader.load();
+
             primaryStage.setScene(new Scene(root));
             primaryStage.setTitle("Iniciar Sesión - Colegio Gotitas del Saber");
             primaryStage.show();
-        } catch (IOException e) {
-            System.out.println("Error al cargar la vista de login: " + e.getMessage());
+
+        } catch (Exception e) {
+            System.out.println("ERROR COMPLETO AL CARGAR LOGIN:");
+            e.printStackTrace();
         }
     }
 
     public void switchToRegister() {
         try {
-           FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/register-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/register-view.fxml"));
 
-
-            
             loader.setControllerFactory(controllerClass -> {
                 if (controllerClass == RegisterController.class) {
                     return new RegisterController(authService, this);
@@ -79,6 +82,64 @@ public class SceneManager {
             primaryStage.show();
         } catch (IOException e) {
             System.out.println("Error al cargar la vista de registro: " + e.getMessage());
+        }
+    }
+
+    public void switchToDocente() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("/view/docente-view.fxml")
+            );
+
+            loader.setControllerFactory(controllerClass -> {
+                if (controllerClass == DocenteController.class) {
+                    return new DocenteController(this);
+                }
+                try {
+                    return controllerClass.getDeclaredConstructor().newInstance();
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            });
+
+            Parent root = loader.load();
+
+            primaryStage.setScene(new Scene(root));
+            primaryStage.setTitle("Docentes - Colegio Gotitas del Saber");
+            primaryStage.show();
+
+        } catch (Exception e) {
+            System.out.println("ERROR COMPLETO AL CARGAR DOCENTES:");
+            e.printStackTrace();
+        }
+    }
+
+    public void switchToMenu() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("/view/menu-view.fxml")
+            );
+
+            loader.setControllerFactory(controllerClass -> {
+                if (controllerClass == MenuController.class) {
+                    return new MenuController(this);
+                }
+                try {
+                    return controllerClass.getDeclaredConstructor().newInstance();
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            });
+
+            Parent root = loader.load();
+
+            primaryStage.setScene(new Scene(root));
+            primaryStage.setTitle("Panel Principal - Colegio Gotitas del Saber");
+            primaryStage.show();
+
+        } catch (Exception e) {
+            System.out.println("ERROR COMPLETO AL CARGAR EL MENÚ:");
+            e.printStackTrace();
         }
     }
 }

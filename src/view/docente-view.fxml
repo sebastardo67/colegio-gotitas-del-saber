@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="main.java.edu.jett.colegio.gotitas.controller.DocenteController"
+            stylesheets="@login-view.css" 
+            prefHeight="650.0" prefWidth="1100.0">
+    <children>
+        <AnchorPane prefHeight="650.0" prefWidth="1100.0" styleClass="background">
+            <children>
+                
+                <!-- Barra superior -->
+                <HBox alignment="CENTER_LEFT" layoutX="50.0" layoutY="25.0" prefWidth="1000.0" styleClass="navbar-card" spacing="20.0">
+                    <padding>
+                        <Insets top="12.0" right="25.0" bottom="12.0" left="25.0"/>
+                    </padding>
+                    <children>
+                        <Label text="🏫 Colegio Gotitas del Saber" styleClass="nav-brand"/>
+                        <Label text="Módulo de Gestión de Docentes" styleClass="nav-subtitle"/>
+                    </children>
+                </HBox>
+
+                <!-- Panel principal -->
+                <VBox alignment="CENTER" layoutX="50.0" layoutY="100.0" prefHeight="520.0" prefWidth="1000.0" spacing="20.0" styleClass="login-card">
+                    <padding>
+                        <Insets top="25.0" right="30.0" bottom="25.0" left="30.0"/>
+                    </padding>
+                    <children>
+                        
+                        <!-- Inputs -->
+                        <HBox alignment="CENTER" spacing="15.0">
+                            <children>
+                                <TextField fx:id="txtIdDocente" promptText="ID Docente" prefWidth="150.0"/>
+                                <TextField fx:id="txtNombre" promptText="Nombre" prefWidth="220.0"/>
+                                <TextField fx:id="txtApellido" promptText="Apellido" prefWidth="220.0"/>
+                                <TextField fx:id="txtCorreo" promptText="Correo Electrónico" prefWidth="280.0"/>
+                            </children>
+                        </HBox>
+
+                        <!-- Botones -->
+                        <HBox alignment="CENTER" spacing="15.0">
+                            <children>
+                                <Button fx:id="btnAgregar" text="➕ Añadir" onAction="#handleAñadir" prefWidth="130.0" styleClass="login-button"/>
+                                <Button fx:id="btnActualizar" text="🔄 Actualizar" onAction="#handleActualizar" prefWidth="130.0" styleClass="secondary-action-button"/>
+                                <Button fx:id="btnBorrar" text="🗑️ Borrar" onAction="#handleBorrar" prefWidth="130.0" styleClass="delete-button"/>
+                                <Button fx:id="btnLimpiar" text="🧹 Leer/Limpiar" onAction="#handleLeer" prefWidth="130.0" styleClass="neutral-button"/>
+                            </children>
+                        </HBox>
+
+                        <!-- Tabla -->
+                        <TableView fx:id="tablaDocentes" prefHeight="280.0" prefWidth="940.0" styleClass="table-view">
+                            <columns>
+                                <TableColumn fx:id="colIdDocente" text="ID Docente" prefWidth="150.0"/>
+                                <TableColumn fx:id="colNombre" text="Nombre" prefWidth="250.0"/>
+                                <TableColumn fx:id="colApellido" text="Apellido" prefWidth="250.0"/>
+                                <TableColumn fx:id="colCorreo" text="Correo Docente" prefWidth="290.0"/>
+                            </columns>
+                        </TableView>
+
+                        <!-- Pie -->
+                        <HBox alignment="CENTER_LEFT">
+                            <children>
+                                <Label text="💡 Selecciona un registro de la tabla para editarlo o eliminarlo." styleClass="info-label"/>
+                            </children>
+                        </HBox>
+
+                    </children>
+                </VBox>
+                
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

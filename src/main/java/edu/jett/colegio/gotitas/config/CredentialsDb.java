@@ -9,8 +9,7 @@ package main.java.edu.jett.colegio.gotitas.config;
  * @author informatica
  */
 public class CredentialsDb {
-        public static final String DATA_BASE = System.getenv("DATA_BASE");   
-        public static final String URL_DB = System.getenv("URL_MYSQL_DB") + DATA_BASE;
-        public static final String USER_DB = System.getenv("USER_MYSQL_DB");
-        public static final String PASS_DB = System.getenv("PASS_MYSQL_DB");
+public static final String URL_DB = "jdbc:mysql://localhost:3306/colegio_gotitas?useSSL=false&serverTimezone=UTC";
+    public static final String USER_DB = "root"; 
+    public static final String PASS_DB = "Andres280709.";
 }

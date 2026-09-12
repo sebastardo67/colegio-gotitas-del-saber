@@ -20,7 +20,7 @@ public class AuthRepository {
         String sql =  "select d.nombre, d.apellido, u.contrasena_hash from usuarios as u"
                     + " right join docentes as d"
                     + " on d.id_docente = u.id_docente"
-                    + " where email = ?";
+                    + " where u.email = ?";
         try(PreparedStatement pstm = ConnectionDb.getconnectionDataBase().prepareStatement(sql)){
             pstm.setString(1, loginRequest.getEmail());
             ResultSet rs = pstm.executeQuery();

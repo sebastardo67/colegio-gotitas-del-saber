@@ -1,0 +1,105 @@
+/* Estilos generales y fondo principal con degradado elegante */
+.background {
+    -fx-background-color: linear-gradient(to bottom right, #1e3c72, #2a5298);
+}
+
+/* Panel flotante (Tarjeta de Login) */
+.login-card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 16px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 20, 0, 0, 10);
+}
+
+/* Tipografías y Títulos */
+.logo {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e3c72;
+}
+
+.school-name {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #6c757d;
+}
+
+.title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #212529;
+}
+
+.subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #6c757d;
+}
+
+.field-label {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #495057;
+}
+
+/* Campos de Texto (Inputs) */
+.input {
+    -fx-background-color: #f8f9fa;
+    -fx-background-radius: 8px;
+    -fx-border-color: #ced4da;
+    -fx-border-radius: 8px;
+    -fx-padding: 10px;
+    -fx-font-size: 13px;
+}
+
+.input:focused {
+    -fx-border-color: #1e3c72;
+    -fx-background-color: #ffffff;
+}
+
+/* Botón Principal */
+.login-button {
+    -fx-background-color: #1e3c72;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-font-size: 14px;
+}
+
+.login-button:hover {
+    -fx-background-color: #16305d;
+}
+
+/* Textos e izquierda lateral motivacional */
+.side-small-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #e0e6ed;
+}
+
+.side-title {
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+
+.side-description {
+    -fx-font-size: 14px;
+    -fx-text-fill: #d1d8e0;
+}
+
+/* Enlaces de registro inferior */
+.register-text {
+    -fx-font-size: 12px;
+    -fx-text-fill: #6c757d;
+}
+
+.register-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #1e3c72;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.register-button:hover {
+    -fx-underline: true;
+}
