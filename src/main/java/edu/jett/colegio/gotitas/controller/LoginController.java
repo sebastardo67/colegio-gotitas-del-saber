@@ -1,93 +1,100 @@
+
 package main.java.edu.jett.colegio.gotitas.controller;
 
-import java.net.URL;
-import java.sql.SQLException;
-import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import main.java.edu.jett.colegio.gotitas.config.ConnectionDb;
 import main.java.edu.jett.colegio.gotitas.dto.request.LoginRequest;
 import main.java.edu.jett.colegio.gotitas.dto.response.LoginResponse;
 import main.java.edu.jett.colegio.gotitas.service.AuthService;
 import main.java.edu.jett.colegio.gotitas.util.SceneManager;
 
-public class LoginController implements Initializable {
-
-    private final AuthService authService;
-    private final SceneManager sceneManager;
+public class LoginController {
 
     @FXML
     private TextField txtFieldEmail;
 
     @FXML
-    private TextField txtFieldPassword;
+    private PasswordField txtFieldPassword;
+
+    private final AuthService authService;
+    private final SceneManager sceneManager;
 
     public LoginController(AuthService authService, SceneManager sceneManager) {
         this.authService = authService;
         this.sceneManager = sceneManager;
     }
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("LoginController inicializado.");
-    }
+    @FXML private void handleOpenRegister(ActionEvent event) { sceneManager.switchToRegister(); }
 
     @FXML
-    public void handleLogin() {
-        try {
-            String email = txtFieldEmail.getText().trim();
-            String password = txtFieldPassword.getText();
+    private void handleLogin(ActionEvent event) {
 
-            if (email.isEmpty() || password.isEmpty()) {
-                System.out.println("El correo y la contraseña no pueden estar vacíos.");
+        String email = txtFieldEmail.getText();
+        String password = txtFieldPassword.getText();
+
+        if (email == null || email.isBlank() || password == null || password.isBlank()) {
+            mostrarAlerta(
+                    Alert.AlertType.WARNING,
+                    "Campos vacíos",
+                    "Ingrese su correo y contraseña."
+            );
+            return;
+        }
+
+        try {
+
+            LoginRequest request = new LoginRequest(email, password);
+
+            LoginResponse response = authService.login(request);
+
+            if (response == null) {
+                mostrarAlerta(
+                        Alert.AlertType.ERROR,
+                        "Inicio de sesión",
+                        "Correo o contraseña incorrectos."
+                );
                 return;
             }
 
-            LoginRequest request = new LoginRequest(email, password);
-            LoginResponse response = authService.login(request);
+            System.out.println(
+                    "Inicio de sesión exitoso! Bienvenido "
+                    + response.getNombre()
+                    + " "
+                    + response.getApellido()
+            );
 
-if (response != null) {
-    System.out.println(
-        "¡Inicio de sesión exitoso! Bienvenido "
-        + response.getNombre()
-        + " "
-        + response.getApellido()
-    );
-
-    sceneManager.switchToDocente();
-
-} else {
-    System.out.println("Credenciales incorrectas o usuario no encontrado.");
-}
+            sceneManager.switchToMenu();
 
         } catch (Exception e) {
-            System.out.println(
-                "Error al iniciar sesión: " + e.getMessage()
+
+            System.out.println("ERROR AL INICIAR SESIÓN:");
+            e.printStackTrace();
+
+            mostrarAlerta(
+                    Alert.AlertType.ERROR,
+                    "Error",
+                    "Ocurrió un error al iniciar sesión."
             );
         }
     }
 
     @FXML
-    public void handleOpenRegister() {
-        try {
-            sceneManager.switchToRegister();
-        } catch (Exception e) {
-            System.out.println(
-                "Error al cambiar a la vista de registro: "
-                + e.getMessage()
-            );
-        }
+    private void handleRegister(ActionEvent event) {
+        sceneManager.switchToRegister();
     }
 
-    public void handleTestDataBaseConnection() throws Exception {
-        try {
-            ConnectionDb.getconnectionDataBase();
-            System.out.println("conectado");
-        } catch (SQLException e) {
-            System.out.println(
-                "error al conectar: " + e.getMessage()
-            );
-        }
+    private void mostrarAlerta(
+            Alert.AlertType tipo,
+            String titulo,
+            String mensaje) {
+
+        Alert alert = new Alert(tipo);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
     }
 }
+

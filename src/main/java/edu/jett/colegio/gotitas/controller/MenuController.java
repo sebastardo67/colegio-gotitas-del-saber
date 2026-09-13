@@ -6,25 +6,52 @@ import main.java.edu.jett.colegio.gotitas.util.SceneManager;
 
 public class MenuController {
 
-    private final SceneManager sceneManager;
+    private SceneManager sceneManager;
 
-    @FXML private Button btnIrDocentes;
-    @FXML private Button btnCerrarSesion;
+    @FXML
+    private Button btnIrEstudiantes;
 
-    public MenuController(SceneManager sceneManager) {
+    @FXML
+    private Button btnIrDocentes;
+
+    @FXML
+    private Button btnIrCursos;
+
+    @FXML
+    private Button btnCerrarSesion;
+
+    public MenuController() {
+    }
+
+    public void setSceneManager(SceneManager sceneManager) {
         this.sceneManager = sceneManager;
     }
 
     @FXML
-    public void initialize() {
-        // Acción para ir a la vista de docentes que ya configuramos
- if (btnIrDocentes != null) {
-    btnIrDocentes.setOnAction(e -> sceneManager.switchToDocente());
-}
+    private void handleEstudiantes() {
+        if (sceneManager != null) {
+            sceneManager.switchToEstudiante();
+        }
+    }
 
-        // Acción para regresar al login
-        if (btnCerrarSesion != null) {
-            btnCerrarSesion.setOnAction(e -> sceneManager.switchToLogin());
+    @FXML
+    private void handleDocentes() {
+        if (sceneManager != null) {
+            sceneManager.switchToDocente();
+        }
+    }
+
+    @FXML
+    private void handleCursos() {
+        if (sceneManager != null) {
+            sceneManager.switchToCurso();
+        }
+    }
+
+    @FXML
+    private void handleCerrarSesion() {
+        if (sceneManager != null) {
+            sceneManager.switchToLogin();
         }
     }
 }
