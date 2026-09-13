@@ -13,8 +13,8 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="main.java.edu.jett.colegio.gotitas.controller.EstudianteController">
-
+            fx:controller="main.java.edu.jett.colegio.gotitas.controller.EstudianteController"
+            stylesheets="@estudiante-view.css">
     <BorderPane prefHeight="700.0"
                 prefWidth="1150.0"
                 AnchorPane.bottomAnchor="0.0"
@@ -209,32 +209,32 @@
                         <columns>
 
                             <TableColumn fx:id="colId"
-                                         prefWidth="55.0"
-                                         text="ID"/>
+                                       prefWidth="55.0"
+                                       text="ID"/>
 
                             <TableColumn fx:id="colNombre"
-                                         prefWidth="160.0"
-                                         text="Nombre"/>
+                                       prefWidth="160.0"
+                                       text="Nombre"/>
 
                             <TableColumn fx:id="colApellido"
-                                         prefWidth="160.0"
-                                         text="Apellido"/>
+                                       prefWidth="160.0"
+                                       text="Apellido"/>
 
                             <TableColumn fx:id="colFechaNacimiento"
-                                         prefWidth="150.0"
-                                         text="Nacimiento"/>
+                                       prefWidth="150.0"
+                                       text="Nacimiento"/>
 
                             <TableColumn fx:id="colGrado"
-                                         prefWidth="130.0"
-                                         text="Grado"/>
+                                       prefWidth="130.0"
+                                       text="Grado"/>
 
                             <TableColumn fx:id="colSeccion"
-                                         prefWidth="100.0"
-                                         text="Sección"/>
+                                       prefWidth="100.0"
+                                       text="Sección"/>
 
                             <TableColumn fx:id="colTelefono"
-                                         prefWidth="150.0"
-                                         text="Teléfono"/>
+                                       prefWidth="150.0"
+                                       text="Teléfono"/>
 
                         </columns>
 
